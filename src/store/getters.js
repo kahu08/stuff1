@@ -16,5 +16,9 @@ export const cartTotal = state => {
   }, 0)
   return sum
 }
+
+export const getCount = state => {
+  return 3
+}
 export default {
 }

@@ -1,71 +1,44 @@
 <template>
-<div class="header-bottom-w3ls">
-    <div class="container-fluid">
-        <div class="navigation-agileits">
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">Jumba</a>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                      <li class="search-agileinfo">
-                        <div class="input-group">
-                          <input type="search" name="Search" placeholder="Search for a Product..." required="">
-                          <button type="submit" class="btn search" aria-label="Left Align">
-                            <icon name="search" style="color:white; margin-top: 10%; margin-bottom: 1%;"></icon>
-                          </button>
-                        </div>
-                      </li>
-                        <li class=""><router-link to="/contact-us" class="hyper "><span>Contact</span></router-link></li>
-                        <li class=""><router-link to="/" class="hyper "><span>Log In / Register</span></router-link></li>
-                        <li class=""><router-link to="/cart" class="hyper "><span>Cart</span></router-link></li>
-                        <li v-for="menu in menus" v-bind:class="{'dropdown': menu.children.length>0}" >
-                        <router-link :to="menu.children.length==0?`/categories/${menu.id}`:``" v-bind:class="{'dropdown-toggle': menu.children.length>0}" class="hyper" data-toggle="dropdown" >
-                            {{ menu.name }}
-                        </router-link>
-                            <ul class="dropdown-menu multi" v-if="menu.children.length>0">
-                                <div class="row">
-                                    <div class="col-sm-4" v-for="columnMenu in organizeMenu(menu.children)">
-                                        <ul class="multi-column-dropdown" >
-                                            <li v-for="menuC in columnMenu">
-                                                <router-link :default-active="$route.path" :to="`/categories/${menuC.id}`">
-                                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                                    {{ menuC.name }}
-                                                </router-link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-4 w3l">
-                                        <router-link :to="`/categories/${1}`">
-                                            <img :src="menu.image_url" class="img-responsive" alt="">
-                                        </router-link>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
 
-        <!-- <div class="col-md-1 cart-wthree">
-            <div class="cart">
-                <form action="#" method="post" class="last">
-                    <input type="hidden" name="cmd" value="_cart" />
-                    <input type="hidden" name="display" value="1" />
-                    <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-                </form>
-            </div>
-        </div> -->
-        <div class="clearfix"></div>
-    </div>
+  <div class="my-nav">
+    <div class="container">
+  <div class="col-md-3 brand-name">
+    <h1><a href="/">JUMBA</a></h1>
+  </div>
+  <div class="col-md-9 nav-links">
+    <ul>
+      <li><input type="search" name="Search" placeholder="Search for a Product..." required="">
+      <button type="submit" class="btn search" aria-label="Left Align">Search</button></li>
+      <li v-for="menu in menus" v-bind:class="{'dropdown': menu.children.length>0}" >
+      <router-link :to="menu.children.length==0?`/categories/${menu.id}`:``" v-bind:class="{'dropdown-toggle': menu.children.length>0}" class="hyper" data-toggle="dropdown" >
+          {{ menu.name }}
+      </router-link>
+          <ul class="dropdown-menu multi" v-if="menu.children.length>0">
+              <div class="row">
+                  <div class="col-sm-4" v-for="columnMenu in organizeMenu(menu.children)">
+                      <ul class="multi-column-dropdown" >
+                          <li v-for="menuC in columnMenu">
+                              <router-link :default-active="$route.path" :to="`/categories/${menuC.id}`">
+                                  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                  {{ menuC.name }}
+                              </router-link>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-4 w3l">
+                      <router-link :to="`/categories/${1}`">
+                          <img :src="menu.image_url" class="img-responsive" alt="">
+                      </router-link>
+                  </div>
+                  <div class="clearfix"></div>
+              </div>
+          </ul>
+      </li>
+      <li class=""><router-link to="/cart" class="hyper "><span>Cart({{ getItemsCount }})</span></router-link></li>
+      <li class=""><router-link to="/contact-us" class="hyper "><span>Contact</span></router-link></li>
+    </ul>
+  </div>
+</div>
 </div>
 
 </template>
@@ -102,93 +75,70 @@ export default {
       $('.dropdown-menu', this).stop(true, true).slideUp('fast')
       $(this).toggleClass('open')
     })
+  },
+  computed: {
+    getItemsCount () {
+      var items = this.$store.state.cart.items
+      var count = 0
+      for (var item of items) {
+        count += item.quantity
+      }
+      return count
+    }
   }
 }
 </script>
 
 <style scoped>
-.navbar-default {
-  background-color: rgba(0, 0, 0, 0);
-  border-radius: 0;
-  text-transform: uppercase;
-  border: 0;
-  margin: 0;
-  padding: 5px 0;
-  -webkit-transition: all 500ms;
-  -moz-transition: all 500ms;
-  -o-transition: all 500ms;
-  transition: all 500ms;
-}
-
-.navbar-default:hover {
-  background-color: rgb(255, 255, 255);
-  -webkit-transition: all 500ms;
-  -moz-transition: all 500ms;
-  -o-transition: all 500ms;
-  transition: all 500ms;
-}
-
-
-/* Title */
-
-.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-  color: black;
-  font-size: 45px;
-  font-weight: bolder;
-}
-
-
-/* Link */
-
-.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
-  color: black;
-}
-
-
-/*navbar dropdown stretched across the screen*/
-
-
-/*.nav>li.dropdown.open {
-  position: static;
-}
-
-.nav>li.dropdown.open .dropdown-menu {
-  display: table;
+.my-nav{
   width: 100%;
-  text-align: center;
-  left: 0;
-  right: 0;
+  position: fixed;
+  -webkit-transition: all 500ms;
+-moz-transition: all 500ms;
+-o-transition: all 500ms;
+transition: all 500ms;
 }
 
-.dropdown-menu>li {
-  display: table-cell;
-}*/
+.my-nav a{
+  color: black;
+  text-transform: uppercase;
 
-
-/* Mobile version */
-
-.navbar-default .navbar-toggle {
-  border-color: #DDD;
+}
+.my-nav:hover{
+  background-color: white;
+  -webkit-transition: all 500ms;
+-moz-transition: all 500ms;
+-o-transition: all 500ms;
+transition: all 500ms;
 }
 
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-  background-color: #DDD;
+.brand-name h1{
+  padding: 10px 0;
+  text-align: left;
+  font-weight: bolder;
+  font-size: 50px;
+}
+.nav-links {
+  padding: 25px 0;
+text-align: right;
+ }
+  .nav-links li {
+    display: inline-block;
+    padding: 0 10px;
+  list-style: none;
+  font-size: 10px;
+}
+input {
+  border: 0;
+  padding: 5px;
 }
 
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #CCC;
-}
+input, button {
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
+  border-radius: 20px;
 
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
-    color: #777;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover, .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
-    color: #333;
-  }
-}
-    .navbar-right{
-        display: inline;
-    }
 
+}
 </style>

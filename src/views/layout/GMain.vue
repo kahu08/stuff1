@@ -51,13 +51,13 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-6 col-sm-12 women-dresses">
+        <div class="col-md-10 col-lg-10 col-sm-12 women-dresses">
             <router-view></router-view>
         </div>
-        <div class="col-md-4 col-lg-4 col-sm-12 w3ls_dresses_grid_left" v-if="hasCartItems">
+        <!-- <div class="col-md-4 col-lg-4 col-sm-12 w3ls_dresses_grid_left" v-if="hasCartItems">
             <g-cart></g-cart>
             <g-checkout></g-checkout>
-        </div>
+        </div> -->
     </div>
     </div>
 </template>

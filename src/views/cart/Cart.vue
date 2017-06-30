@@ -1,5 +1,5 @@
 <template>
-    <div class="w3ls_dresses_grid_left_grid">
+    <div>
         <h3>Cart</h3>
         <div class="w3ls_dresses_grid_left_grid_sub">
             <div class="ecommerce_color">

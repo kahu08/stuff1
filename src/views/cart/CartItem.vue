@@ -1,6 +1,6 @@
 <template>
     <div>
-        <li class="list-group-item cart-items">
+        <li class="cart-items">
           <div class="row">
               <div class="col-md-4 product-image">
                 <img :src="item.image_url">
@@ -9,7 +9,7 @@
                   <h4><strong>{{ item.name }}</strong></h4>
                   <p>{{ item.order_options }}</p>
 
-                  <p>{{ item.quantity }}</p>
+                  <p>Number: {{ item.quantity }}</p>
               </div>
               <div class="col-md-3 product-price">
                   <p>{{ item.price }}</p>
