@@ -1,8 +1,10 @@
 <template>
   <div id="app">
       <g-header></g-header>
+      <div class="body">
     <router-view></router-view>
       <g-footer></g-footer>
+    </div>
   </div>
 </template>
 
@@ -17,6 +19,9 @@ export default {
 }
 </script>
 <style scoped>
+    .body {
+      padding-top: 80px;
+    }
     .newsletter{
         margin-top: 100px;
     }

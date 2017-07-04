@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid">
-        <div class="row">
-        <div class="col-md-2 col-lg-2 col-sm-12 w3ls_dresses_grid_left">
-            <div class="w3ls_dresses_grid_left_grid">
+        <div class="row" style="margin-top:50px;">
+        <!-- <div class="col-md-2 col-lg-2 col-sm-12 w3ls_dresses_grid_left"> -->
+            <!-- <div class="w3ls_dresses_grid_left_grid">
                 <h3>Categories</h3>
                 <div class="w3ls_dresses_grid_left_grid_sub">
                     <div class="ecommerce_dres-type">
@@ -13,8 +13,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="w3ls_dresses_grid_left_grid" v-for="option in categoryOptions">
+            </div> -->
+            <!-- <div class="w3ls_dresses_grid_left_grid" v-for="option in categoryOptions">
                 <h3>{{ option.name }}</h3>
                 <div class="w3ls_dresses_grid_left_grid_sub">
                     <div :class="(option.name.toLowerCase()=='color')?'ecommerce_color':'ecommerce_size ecommerce_color' ">
@@ -28,7 +28,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
          <!--   <div class="w3ls_dresses_grid_left_grid">
                 <h3>Size</h3>
                 <div class="w3ls_dresses_grid_left_grid_sub">
@@ -42,16 +42,16 @@
                     </div>
                 </div>
             </div>-->
-            <div class="w3ls_dresses_grid_left_grid">
+            <!-- <div class="w3ls_dresses_grid_left_grid">
                 <div class="dresses_img_hover">
                     <img src="images/offer3.jpg" alt=" " class="img-responsive" />
                     <div class="dresses_img_hover_pos">
                         <h4>Upto<span>30%</span><i>Off</i></h4>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-10 col-lg-10 col-sm-12 women-dresses">
+            </div> -->
+        <!-- </div> -->
+        <div class="col-md-12 col-lg-12 col-sm-12 women-dresses">
             <router-view></router-view>
         </div>
         <!-- <div class="col-md-4 col-lg-4 col-sm-12 w3ls_dresses_grid_left" v-if="hasCartItems">

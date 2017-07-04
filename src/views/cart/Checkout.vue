@@ -3,7 +3,7 @@
         <h3>Checkout</h3>
         <div class="w3ls_dresses_grid_left_grid_sub">
             <div class="ecommerce_color">
-                <h4>Select payment method</h4>
+                <h2 style="font-weight: bolder;">Select payment method</h2>
                 <div class="tabbable-panel">
                     <div class="tabbable-line">
                         <ul class="nav nav-tabs-custom">
@@ -24,25 +24,25 @@
                                         <div class="form-group">
                                             <label for="phone_number">Phone number</label>
                                             <div class="input-group">
-                                                <input id="phone_number" v-on:change="updateCheckoutPhone" v-model="paymentPhone" placeholder="07XX-XXXXXX"  type="tel" class="checkout-input">
+                                                <input id="phone_number" v-on:change="updateCheckoutPhone" v-model="paymentPhone" placeholder="07XX-XXXXXX"  type="tel" class="checkout-input form-control">
                                             </div>
                                         </div>
                                     </form>
-                                        <div class="row align-items-center">
+                                        <div class="row align-items-center mobile-money">
                                             <div class="offset-sm-2 col-md-3 col-sm-4 col-lg-3">
-                                            <img src="../../assets/images/mpesa.png" height="35" width="65"/>
+                                            <img src="../../assets/images/mpesa.png" height="70"/>
                                             </div>
                                             <div class="offset-sm-2 col-md-3 col-sm-4 col-lg-3">
 
-                                            <img src="../../assets/images/airtel.png" height="35" width="65"/>
+                                            <img src="../../assets/images/airtel.png" height="70"/>
                                         </div>
                                             <div class="offset-sm-2 col-md-3 col-sm-4 col-lg-3">
 
-                                            <img src="../../assets/images/orange.png" height="45" width="63"/>
+                                            <img src="../../assets/images/orange.png" height="100"/>
                                     </div>
                                             <div class="offset-sm-2 col-md-3 col-sm-4 col-lg-3">
 
-                                            <img src="../../assets/images/equitel.png" height="35" width="63"/>
+                                            <img src="../../assets/images/equitel.png" height="70"/>
                                     </div>
                                         </div>
                                     </div>
@@ -53,8 +53,8 @@
                                 <div class="panel">
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="offset-3 col-md-6">
-                                                <img class="text-center" height="40" width="180"
+                                            <div class="offset-3 col-md-6" style="text-align: center;">
+                                                <img class="text-center"
                                                      src="http://i2.wp.com/calroofingsystems.com/wp-content/uploads/2012/03/visa-mastercard-logo.jpg?fit=848%2C276">
                                                 </div>
                                             </div>
@@ -63,20 +63,20 @@
                                             <div class="form-group">
                                                 <label for="phone_number">Full name</label>
                                                 <div class="input-group">
-                                                    <input id="name" v-validate="'required'" placeholder="Full name"  type="text" class="checkout-input">
+                                                    <input id="name" v-validate="'required'" placeholder="Full name"  type="text" class="checkout-input form-control">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="phone_number">Email address</label>
                                                 <div class="input-group">
-                                                    <input id="email"  v-validate="'required|email'" placeholder="Email"  type="text" class="checkout-input">
+                                                    <input id="email"  v-validate="'required|email'" placeholder="Email"  type="text" class="checkout-input form-control">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="cardNumber">Card number</label>
                                                 <div class="input-group">
-                                                    <input type="text" class="checkout-input" id="cardNumber"  v-validate="'required|credit_card'" placeholder="Card number"
+                                                    <input type="text" class="checkout-input form-control" id="cardNumber"  v-validate="'required|credit_card'" placeholder="Card number"
                                                            required autofocus />
                                                 </div>
                                             </div>
@@ -122,14 +122,13 @@
                                                 <div class="col-xs-5 col-md-5 col-lg-5">
                                                     <div class="form-group">
                                                         <label for="cvCode">CVC</label>
-                                                        <input type="password" class="checkout-input" id="cvCode" placeholder="CVC" required />
+                                                        <input type="password" class="checkout-input form-control" id="cvCode" placeholder="CVC" required />
                                                     </div>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -140,7 +139,7 @@
 
                     </div>
                 </div>
-                <h4 v-if="!authenticated">Checkout as</h4>
+                <h2 style="font-weight: bolder;" v-if="!authenticated">Checkout as</h2>
                 <div class="tabbable-panel" v-if="!authenticated">
                     <div class="tabbable-line">
                         <ul class="nav nav-tabs-custom" :disabled="orderProcessing">
@@ -167,7 +166,7 @@
                                             <div class="form-group">
                                                 <label for="phone_number">Phone number</label>
                                                 <div class="input-group">
-                                                    <input id="checkout_phone" v-model="checkoutPhone" placeholder="07XX-XXXXXX"  type="tel" class="checkout-input">
+                                                    <input id="checkout_phone" v-model="checkoutPhone" placeholder="07XX-XXXXXX"  type="tel" class="checkout-input form-control">
                                                 </div>
                                             </div>
                                         </form>
@@ -177,7 +176,7 @@
                             </div>
                             <div class="tab-pane" id="returning_user_checkout">
                                 <div class="panel">
-                                    <div class="panel-body">
+                                    <div class="panel-body" style="text-align:center;">
                                         <div class="toolbar button-group" :disabled="orderProcessing">
                                             <div class="row">
                                                 <div class="col-md-6 col-lg-6 col-sm-6">
@@ -196,7 +195,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="offset-md-3 offset-sm-3 offset-lg-3 col-md-6 col-lg-6 col-sm-6">
+                    <div class="offset-md-3 offset-sm-3 offset-lg-3 col-md-6 col-lg-6 col-sm-6" style="text-align:center;">
                         <button type="submit" @click="orderSubmit" :disabled="canCheckout || orderProcessing" class="order-button">
                             <icon name="shopping-cart" v-if="!orderProcessing"></icon>
                             <icon name="refresh" v-if="orderProcessing" spin></icon>
@@ -206,16 +205,7 @@
                     <div class="col-md-4 col-lg-4 col-sm-4">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 col-lg-4 col-sm-4 offset-md-4 offset-sm-4 offset-lg-4">
-                        <img height="50" style="padding: 10px;" width="60" src="http://nouveta.tech/wp-content/uploads/2017/03/logo.jpg"/>
-                    </div>
-                </div>
             </div>
-        </div>
-        <div class="card-footer pw-by-nouveta">
-            <p >Powered by Nouveta</p>
-            <p >&copy; 2017</p>
         </div>
     </div>
 </template>
@@ -328,7 +318,51 @@ export default{
 </script>
 
 <style>
-    .select{
+    .mobile-money {
+      padding-top: 20px;
+    }
+    .nav-tabs-custom{
+      width: 100%;
+    }
+
+   /* Tabs panel */
+   .tabbable-panel {
+     width: 100%;
+     padding-bottom: 20px;
+     padding-top: 20px;
+   }
+   .nav-tabs-custom > ul.nav.nav-tabs-custom > li {
+     float: none;
+     display: table-cell;
+   }
+   .tabbable-line .nav li {
+     width: 100%;
+   }
+   h3 :before{
+     content: '' !important;
+     background: #e60073 !important;
+     width: 10% !important;
+     height: 2px !important;
+     position: absolute !important;
+     top: 50% !important;
+     left: 0% !important;
+   }
+   img {
+     max-height: 60px;
+     width: auto;
+   }
+   button {
+     border-radius: 20px;
+     padding: 0 20px;
+     color: black;
+     border: 0;
+     /*border: 1px solid black;*/
+   }
+   button:hover {
+     background-color: black;
+     color: white;
+}
+    /*.select{
         height: 46px;
         padding: 10px 16px;
         font-size: 18px;
@@ -431,32 +465,7 @@ export default{
         background: #fff;
         border: 1px solid #DBDBDB;
         float: left;
-    }
-    /* Tabs panel */
-    .tabbable-panel {
-        width: 100%;
-        padding-bottom: 20px;
-        padding-top: 20px;
-    }
-    .nav-tabs-custom{
-        width: 100%;
-    }
-    .nav-tabs-custom > ul.nav.nav-tabs-custom > li {
-        float: none;
-        display: table-cell;
-    }
-    .tabbable-line .nav li {
-        width: 100%;
-    }
-    h3 :before{
-        content: '' !important;
-        background: #e60073 !important;
-        width: 10% !important;
-        height: 2px !important;
-        position: absolute !important;
-        top: 50% !important;
-        left: 0% !important;
-    }
+      }*/
     /* Default mode */
     .tabbable-line > .nav-tabs-custom {
         border: none;
@@ -475,7 +484,7 @@ export default{
         color: #a6a6a6;
     }
     .tabbable-line > .nav-tabs-custom > li.open, .tabbable-line > .nav-tabs-custom > li:hover {
-        border-bottom: 4px solid #F48FB1;
+        border-bottom: 4px solid black;
     }
     .tabbable-line > .nav-tabs-custom > li.open > a, .tabbable-line > .nav-tabs-custom > li:hover > a {
         border: 0;
@@ -489,7 +498,7 @@ export default{
         margin-top: 0px;
     }
     .tabbable-line > .nav-tabs-custom > li.active {
-        border-bottom: 4px solid #e60073;
+        border-bottom: 4px solid black;
         position: relative;
     }
     .tabbable-line > .nav-tabs-custom > li.active > a {
@@ -511,7 +520,7 @@ export default{
     }
 
     /* Below tabs mode */
-
+/*
     .tabbable-line.tabs-below > .nav-tabs-custom > li {
         border-top: 4px solid transparent;
     }
@@ -532,5 +541,5 @@ export default{
         border-top: 0;
         border-bottom: 1px solid #eee;
         padding-bottom: 15px;
-    }
+    }*/
 </style>

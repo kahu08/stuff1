@@ -1,6 +1,7 @@
 <template>
+  <div class="total-amount">
     <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-group-item" style="text-align:right;">
             <h4>Subtotal <strong> {{ cartTotal | formatMoney('Kshs. ') }} </strong>
             </h4>   <!--({{itemsQuantity}} {{'item' | pluralize(itemsQuantity) }}):{{subtotal  }}-->
         </li>
@@ -14,6 +15,7 @@
         </h4>
         </li>
     </ul>
+  </div>
 </template>
 
 <script>
@@ -35,3 +37,7 @@ export default{
   }
 }
 </script>
+
+<style>
+
+</style>

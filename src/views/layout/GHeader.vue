@@ -6,14 +6,14 @@
     <h1><a href="/">JUMBA</a></h1>
   </div>
   <div class="col-md-9 nav-links">
-    <ul>
+    <!-- <ul>
       <li><input type="search" name="Search" placeholder="Search for a Product..." required="">
       <button type="submit" class="btn search" aria-label="Left Align">Search</button></li>
       <li v-for="menu in menus" v-bind:class="{'dropdown': menu.children.length>0}" >
       <router-link :to="menu.children.length==0?`/categories/${menu.id}`:``" v-bind:class="{'dropdown-toggle': menu.children.length>0}" class="hyper" data-toggle="dropdown" >
           {{ menu.name }}
-      </router-link>
-          <ul class="dropdown-menu multi" v-if="menu.children.length>0">
+      </router-link> -->
+          <!-- <ul class="dropdown-menu multi" v-if="menu.children.length>0">
               <div class="row">
                   <div class="col-sm-4" v-for="columnMenu in organizeMenu(menu.children)">
                       <ul class="multi-column-dropdown" >
@@ -22,9 +22,15 @@
                                   <i class="fa fa-angle-right" aria-hidden="true"></i>
                                   {{ menuC.name }}
                               </router-link>
+                          </li> -->
+                          <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="fa fa-bars"></span></a>
+                              <ul class="dropdown-menu">
+                                  <li v-for="menu in menus"><router-link :to="`categories/${menu.id}`">{{ menu.name }}</router-link></li>
+                              </ul>
                           </li>
-                      </ul>
-                  </div>
+                      <!-- </ul> -->
+                  <!-- </div>
                   <div class="col-sm-4 w3l">
                       <router-link :to="`/categories/${1}`">
                           <img :src="menu.image_url" class="img-responsive" alt="">
@@ -32,7 +38,7 @@
                   </div>
                   <div class="clearfix"></div>
               </div>
-          </ul>
+          </ul> -->
       </li>
       <li class=""><router-link to="/cart" class="hyper "><span>Cart({{ getItemsCount }})</span></router-link></li>
       <li class=""><router-link to="/contact-us" class="hyper "><span>Contact</span></router-link></li>
@@ -93,6 +99,7 @@ export default {
 .my-nav{
   width: 100%;
   position: fixed;
+  z-index: 10;
   -webkit-transition: all 500ms;
 -moz-transition: all 500ms;
 -o-transition: all 500ms;

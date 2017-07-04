@@ -9,7 +9,7 @@
            </p>
       </div>
       <div class="product-caption">
-          <h4><a href="product.html">{{ product.name }}</a></h4>
+          <h4><router-link :to="`/products/${product.id}`">{{ product.name }}</router-link></h4>
           <p>Kshs. {{ product.price}}</p>
       </div>
   </div>

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/views/home/Home'
 import ContactUs from '@/views/home/ContactUs'
 import Cart from '@/views/cart/Cart'
+import ProductDetails from '@/views/products/ProductDetails'
 import Hello from '@/components/Hello'
 import GMain from '@/views/layout/GMain'
 // import ThumbnailProduct from '@/views/products/ThumbnailProduct'
@@ -38,7 +39,7 @@ export default new Router({
           path: '/products/:id',
           name: 'GirlStuff',
           // Specific Product
-          component: Products
+          component: ProductDetails
         }
       ]
     },

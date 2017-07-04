@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12'">
                 <div class="container">
-                    <h1>Best sellers</h1>
+                    <h1>BEST SELLERS</h1>
                     <products></products>
                 </div>
             </div>
@@ -47,10 +47,16 @@ export default{
 </script>
 
 <style>
+h1 {
+  font-weight: bolder;
+font-size: 30px;
+padding: 20px 0;
+}
     .tales {
         width: 100%;
     }
     .landing-page {
+      margin-top: -80px !important;
       background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url("../../assets/images/f3-1.jpg");
       padding: 220px;
       background-repeat: no-repeat;

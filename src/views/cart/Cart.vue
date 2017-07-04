@@ -1,13 +1,23 @@
 <template>
     <div>
-        <h3>Cart</h3>
+        <h1>CART</h1>
         <div class="w3ls_dresses_grid_left_grid_sub">
             <div class="ecommerce_color">
                 <ul class="list-group" v-for="item in items">
                     <g-cart-item :item="item"></g-cart-item>
                 </ul>
             </div>
-            <g-cart-summary></g-cart-summary>
+
+            <div class="total" v-if="hasCartItems">
+                  <g-cart-summary></g-cart-summary>
+                  <button type="submit" v-if="!isCheckingOut" @click="proceedToCheckout" class="order-button">
+                    Proceed to checkout
+                  </button>
+                    <button type="submit" v-if="!isCheckingOut" @click="clearCart" class="order-button">
+                        Clear Cart
+                    </button>
+                    <g-checkout></g-checkout>
+            </div>
         </div>
     </div>
 </template>
@@ -24,10 +34,22 @@ export default{
     }
   },
   methods: {
+    proceedToCheckout () {
+      this.$store.commit('PROCEED_TO_CHECKOUT', true)
+    },
+    clearCart () {
+      this.$store.commit('RESTORE_CART', [])
+    }
   },
   computed: {
     items () {
       return this.$store.state.cart.items
+    },
+    hasCartItems () {
+      return this.$store.state.cart.items.length > 0
+    },
+    isCheckingOut () {
+      return this.$store.state.checkout.is_checking_out
     }
   },
   created () {
@@ -37,10 +59,17 @@ export default{
 </script>
 
 <style>
+h1 {
+  font-weight: bolder;
+font-size: 30px;
+}
   .list-group{
       border: none !important;
   }
   .list-group-item{
       border: none !important;
  }
+ /*.total {
+   text-align: right;
+ }*/
 </style>

@@ -9,10 +9,10 @@
                   <h4><strong>{{ item.name }}</strong></h4>
                   <p>{{ item.order_options }}</p>
 
-                  <p>Number: {{ item.quantity }}</p>
+                  <p>Number: {{ item.quantity }} item(s)</p>
               </div>
               <div class="col-md-3 product-price">
-                  <p>{{ item.price }}</p>
+                  <p>Kshs. {{ item.price }}</p>
                   <button type="button" class="btn remove" @click="removeFromCart(item)">Remove</button>
               </div>
           </div>

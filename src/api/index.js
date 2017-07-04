@@ -14,6 +14,9 @@ export const getChildCategories = params => {
 export const getTopProducts = params => {
   return axios.get(BASE_API_URL + '/products/top', {})
 }
+export const getProductDetails = params => {
+  return axios.get(BASE_API_URL + `/products/${params.id}`, {})
+}
 
 export const getRecommendations = params => {
   return axios.get(BASE_API_URL + '/products/recommendations', {})
