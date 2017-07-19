@@ -10,10 +10,11 @@
 
             <div class="total" v-if="hasCartItems">
                   <g-cart-summary></g-cart-summary>
-                  <button type="submit" v-if="!isCheckingOut" @click="proceedToCheckout" class="order-button">
+                  <button type="submit" v-if="!isCheckingOut" @click="proceedToCheckout" class="order-button" style="float:right; margin-left:2em; ">
                     Proceed to checkout
                   </button>
-                    <button type="submit" v-if="!isCheckingOut" @click="clearCart" class="order-button">
+
+                    <button type="submit" v-if="!isCheckingOut" @click="clearCart" class="order-button" style="float:right;">
                         Clear Cart
                     </button>
                     <g-checkout></g-checkout>

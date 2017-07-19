@@ -1,45 +1,20 @@
 <template>
 
-  <div class="my-nav">
+  <div class="my-nav navbar-fixed-top">
     <div class="container">
   <div class="col-md-3 brand-name">
     <h1><a href="/">JUMBA</a></h1>
   </div>
   <div class="col-md-9 nav-links">
-    <!-- <ul>
-      <li><input type="search" name="Search" placeholder="Search for a Product..." required="">
-      <button type="submit" class="btn search" aria-label="Left Align">Search</button></li>
-      <li v-for="menu in menus" v-bind:class="{'dropdown': menu.children.length>0}" >
-      <router-link :to="menu.children.length==0?`/categories/${menu.id}`:``" v-bind:class="{'dropdown-toggle': menu.children.length>0}" class="hyper" data-toggle="dropdown" >
-          {{ menu.name }}
-      </router-link> -->
-          <!-- <ul class="dropdown-menu multi" v-if="menu.children.length>0">
-              <div class="row">
-                  <div class="col-sm-4" v-for="columnMenu in organizeMenu(menu.children)">
-                      <ul class="multi-column-dropdown" >
-                          <li v-for="menuC in columnMenu">
-                              <router-link :default-active="$route.path" :to="`/categories/${menuC.id}`">
-                                  <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                  {{ menuC.name }}
-                              </router-link>
-                          </li> -->
-                          <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="fa fa-bars"></span></a>
-                              <ul class="dropdown-menu">
-                                  <li v-for="menu in menus"><router-link :to="`categories/${menu.id}`">{{ menu.name }}</router-link></li>
-                              </ul>
-                          </li>
-                      <!-- </ul> -->
-                  <!-- </div>
-                  <div class="col-sm-4 w3l">
-                      <router-link :to="`/categories/${1}`">
-                          <img :src="menu.image_url" class="img-responsive" alt="">
-                      </router-link>
-                  </div>
-                  <div class="clearfix"></div>
-              </div>
-          </ul> -->
+
+    <!-- the categories will appear as a dropdown of the menu -->
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="fa fa-bars"></span></a>
+          <ul class="dropdown-menu">
+              <li v-for="menu in menus"><router-link :to="`/categories/${menu.id}`">{{ menu.name }}</router-link></li>
+          </ul>
       </li>
+    </li>
       <li class=""><router-link to="/cart" class="hyper "><span>Cart({{ getItemsCount }})</span></router-link></li>
       <li class=""><router-link to="/contact-us" class="hyper "><span>Contact</span></router-link></li>
     </ul>
@@ -82,6 +57,16 @@ export default {
       $(this).toggleClass('open')
     })
   },
+  created () {
+    $(document).scroll(function () {
+      var $nav = $('.navbar-fixed-top')
+      $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height())
+    })
+    $(document).scroll(function () {
+      var $logo = $('.navbar-brand')
+      $logo.remove($(this).scrollTop() > $.height())
+    })
+  },
   computed: {
     getItemsCount () {
       var items = this.$store.state.cart.items
@@ -96,6 +81,10 @@ export default {
 </script>
 
 <style scoped>
+.navbar-fixed-top.scrolled {
+  background-color: #fff !important;
+  transition: background-color 200ms linear;
+}
 .my-nav{
   width: 100%;
   position: fixed;

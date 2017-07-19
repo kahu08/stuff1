@@ -5,6 +5,8 @@
     <router-view></router-view>
       <g-footer></g-footer>
     </div>
+    <button @click="topFunction" id="myBtn" title="Go to top">Back to Top</button>
+
   </div>
 </template>
 
@@ -12,13 +14,58 @@
 import GHeader from '../src/views/layout/GHeader'
 import GFooter from '../src/views/layout/GFooter'
 import Sidebar from '../src/views/layout/GSidebar'
+// import $ from 'jquery'
 
 export default {
   name: 'app',
-  components: [GHeader, Sidebar, GFooter]
+  components: [GHeader, Sidebar, GFooter],
+  mounted () {
+
+  },
+  created () {
+  // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      this.scrollFunction()
+    }
+  //   function scrollFunction () {
+  //     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  //       document.getElementById('myBtn').style.display = 'block'
+  //     } else {
+  //       document.getElementById('myBtn').style.display = 'none'
+  //     }
+  //   }
+  //
+  // // When the user clicks on the button, scroll to the top of the document
+  //   function topFunction () {
+  //     document.body.scrollTop = 0 // For Chrome, Safari and Opera
+  //     document.documentElement.scrollTop = 0 // For IE and Firefox
+  //   }
+  },
+  methods: {
+    scrollFunction () {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById('myBtn').style.display = 'block'
+      } else {
+        document.getElementById('myBtn').style.display = 'none'
+      }
+    },
+    topFunction () {
+      document.body.scrollTop = 0 // For Chrome, Safari and Opera
+      document.documentElement.scrollTop = 0 // For IE and Firefox
+    }
+  }
 }
 </script>
 <style scoped>
+#myBtn{
+  z-index: 99;
+  border: none;
+  outline: none;
+  float: right;
+}
+#myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
     .body {
       padding-top: 80px;
     }

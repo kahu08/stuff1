@@ -1,6 +1,10 @@
 <template>
-    <div class="w3ls_dresses_grid_left_grid">
-        <h3>Checkout</h3>
+    <div class="">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
         <div class="w3ls_dresses_grid_left_grid_sub">
             <div class="ecommerce_color">
                 <h2 style="font-weight: bolder;">Select payment method</h2>
@@ -356,6 +360,7 @@ export default{
      padding: 0 20px;
      color: black;
      border: 0;
+     /*padding: 0.6em 0;*/
      /*border: 1px solid black;*/
    }
    button:hover {
