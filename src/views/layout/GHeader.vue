@@ -2,25 +2,40 @@
 
   <div class="my-nav navbar-fixed-top">
     <div class="container">
-  <div class="col-md-3 brand-name">
-    <h1><a href="/">JUMBA</a></h1>
-  </div>
-  <div class="col-md-9 nav-links">
+      <div class="hamburger-menu">
+          <a @click="on()"><span class="fa fa-bars" aria-hidden="true"></span></a>
+      </div>
+      <div class="overlay" id="my-overlay">
 
-    <!-- the categories will appear as a dropdown of the menu -->
-      <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="fa fa-bars"></span></a>
-          <ul class="dropdown-menu">
+        <div class="overlay-content">
+          <i class="fa fa-times" aria-hidden="true" @click="off()"></i>
+            <ul>
               <li v-for="menu in menus"><router-link :to="`/categories/${menu.id}`">{{ menu.name }}</router-link></li>
+              <li class=""><router-link to="/cart" class="hyper "><span>Cart({{ getItemsCount }})</span></router-link></li>
+              <li class=""><router-link to="/contact-us" class="hyper "><span>Contact</span></router-link></li>
+            </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-3 brand-name">
+          <h1><a href="/">JUMBA</a></h1>
+        </div>
+        <div class="col-md-9 col-sm-9 nav-links">
+          <!-- the categories will appear as a dropdown of the menu -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="fa fa-bars"></span></a>
+                <ul class="dropdown-menu">
+                    <li v-for="menu in menus"><router-link :to="`/categories/${menu.id}`">{{ menu.name }}</router-link></li>
+                </ul>
+            </li>
+          </li>
+            <li class=""><router-link to="/cart" class="hyper "><span>Cart({{ getItemsCount }})</span></router-link></li>
+            <li class=""><router-link to="/contact-us" class="hyper "><span>Contact</span></router-link></li>
           </ul>
-      </li>
-    </li>
-      <li class=""><router-link to="/cart" class="hyper "><span>Cart({{ getItemsCount }})</span></router-link></li>
-      <li class=""><router-link to="/contact-us" class="hyper "><span>Contact</span></router-link></li>
-    </ul>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
 </template>
 
@@ -43,6 +58,13 @@ export default {
     },
     organizeMenu (menu) {
       return chunk(menu, 2)
+    },
+    off () {
+      document.getElementById('my-overlay').style.display = 'none'
+    },
+    on () {
+      $('#my-overlay').addClass('animated slideInLeft')
+      document.getElementById('my-overlay').style.display = 'block'
     }
   },
   mounted () {
@@ -134,7 +156,64 @@ input, button {
   -moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
   box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
   border-radius: 20px;
+}
 
+.overlay {
+  display: none;
+  font-size: 30px;
+  position: absolute;
+  top: 15px;
+  left: 35px;
+}
 
+.overlay-content {
+  /*display: none;*/
+   width: 50%;
+   position: fixed;
+   z-index: 10;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.9);
+   text-align: center;
+   font-size: 20px;
+}
+
+.overlay i {
+  float: right;
+  margin: 15px;
+}
+
+.overlay-content span {
+  color: white;
+}
+
+.overlay ul {
+  margin: 70px 0;
+  list-style: none;
+  padding: 0;
+}
+
+.overlay li {
+  padding: 5px;
+}
+
+.overlay i {
+  color: white;
+  float: right;
+  margin: 15px;
+}
+
+@media only screen and (max-width: 426px) {
+  .overlay {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+  }
+  .brand-name h1 {
+    text-align: center;
+  }
 }
 </style>
